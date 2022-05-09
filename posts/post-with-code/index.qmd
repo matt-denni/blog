@@ -1,9 +1,33 @@
 ---
-title: "Post With Code"
-author: "Harlow Malloc"
+title: "Measures of center and spread"
+author: "Matt Dennis"
 date: "2022-05-09"
-categories: [news, code, analysis]
+categories: [statistics]
 image: "image.jpg"
 ---
 
-This is a post with executable code.
+Once upon a time, I composed and taught music for a living.  Now, I'm a data scientist.  It's been a wild ride and loads of fun.  But more about that in another post.
+
+As a musician, I was good at music analysis.  I learned many techniques that could help me understand how a piece of music was put together.  While this helped me to develop an analytical way of thinking, none of the analytical *techniques* I learned in music analysis have been directly applicable to the problems I've faced as a data scientist (thus far).
+
+So, I needed to go back to the field of Mathematics and Statistics and acquire/dust off the tools needed in the data science world.  If you're on a similar journey to the one I took, then you might find the next series of posts that I'm going to be putting together useful.
+
+I'm starting off with this post, on statistical measures of center and spread.  I'll be using `R` and the built in `mtcars` data set in the code examples.
+
+Here's what the first few rows of this data set look like:
+
+```{r}
+head(mtcars)
+```
+
+As you can see, there are a number of variables.  We'll be focusing on the first one, `mpg` in the examples below.
+
+## Measures of center
+
+```{r}
+
+```
+
+In statistics, there are three commonly used measures of center.
+
+

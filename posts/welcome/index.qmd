@@ -1,12 +1,16 @@
 ---
-title: "Welcome To My Blog"
-author: "Tristan O'Malley"
-date: "2022-05-06"
+title: "Welcome!"
+author: "Matt Dennis"
+date: "2022-05-09"
 categories: [news]
 ---
 
-This is the first post in a Quarto blog. Welcome!
+Hi!
+
+I'm glad that you've landed here. This is my blog which serves as my notebook for all things data science related.
+
+At the moment, there's nothing much here, but if you check back in a few months and you will hopefully be able to read through a bunch of posts and see what I've been up to.
+
+Happy reading, Matt
 
 ![](thumbnail.jpg)
-
-Since this post doesn't specify an explicit `image`, the first image in the post will be used in the listing page of posts.
