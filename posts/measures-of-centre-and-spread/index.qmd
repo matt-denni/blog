@@ -1,5 +1,5 @@
 ---
-title: "Measures of center and spread"
+title: "Measures of centre and spread"
 author: "Matt Dennis"
 date: "2022-05-09"
 categories: [statistics]
@@ -22,12 +22,32 @@ head(mtcars)
 
 As you can see, there are a number of variables.  We'll be focusing on the first one, `mpg` in the examples below.
 
-## Measures of center
+## Measures of centre
+
+In statistics, three common examples of measures of centre are *mean*, *median* and *mode*.
+
+### Mean
+
+The mean value of a series of numbers is also often called the *average*.  In mathematical notation, the mean is often denoted as $\overline{x}$.  It is calculated by adding all the numbers in the series together, and then dividing that by the number of numbers in the series.
+
+Here's an example of how one might calculate the mean in R:
 
 ```{r}
-
+(1 + 2 + 3 + 4) / 4
 ```
 
-In statistics, there are three commonly used measures of center.
+Fortunately, there is an easier way to do this.  In R, you can make use of the `mean()` function to get the same result.  In the code below, The `c()` function collects a series of values into a vector.
 
+```{r}
+mean(c(1, 2, 3, 4))
+```
 
+We can ask R to check that both approaches return the same value by using the `==` operator, which means 'is equal to'.  If both approaches return the same value, then R will print a result `TRUE`.
+
+```{r}
+(1 + 2 + 3 + 4) / 4 == mean(c(1, 2, 3, 4))
+```
+
+### Median
+
+The median is the 'mid-point' in a series of values.  
