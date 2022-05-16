@@ -9,7 +9,7 @@
 <meta name="author" content="Matt Dennis">
 <meta name="dcterms.date" content="2022-05-16">
 
-<title>blog - Measures of centre and spread</title>
+<title>blog - Measures of centre</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -160,7 +160,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Measures of centre and spread</h1>
+      <h1 class="title">Measures of centre</h1>
                           <div class="quarto-categories">
                 <div class="quarto-category">statistics</div>
               </div>
@@ -200,15 +200,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="measures-of-centre" class="level2">
-<h2 class="anchored" data-anchor-id="measures-of-centre">Measures of centre</h2>
 <p>In statistics, the two most common examples of measures of centre are the <em>mean</em> and <em>median</em>. Another (less commonly used) measure of centre is the <em>mode</em>. In this post, I will discuss the mean and median.</p>
-<section id="mean" class="level3">
-<h3 class="anchored" data-anchor-id="mean">Mean</h3>
+<section id="mean" class="level2">
+<h2 class="anchored" data-anchor-id="mean">Mean</h2>
 <p>The mean value of a series of numbers is also often called the <em>average</em>. In mathematical notation, the mean is often denoted as <span class="math inline">\(\overline{x}\)</span>. It is calculated by adding all the numbers in the series together, and then dividing that by the number of numbers in the series.</p>
 <p>There are a number of different forms of the mean: arithmetic, weighted, geometric and harmonic. Generally, when most people talk about the mean without specifying a type, they are referring to the arithmetic mean, which is what is discussed below. In a future post, I will look at the other forms of the mean (and where you might want to use them).</p>
-<section id="arithmetic-mean" class="level4">
-<h4 class="anchored" data-anchor-id="arithmetic-mean">Arithmetic mean</h4>
+<section id="arithmetic-mean" class="level3">
+<h3 class="anchored" data-anchor-id="arithmetic-mean">Arithmetic mean</h3>
 <p>Here’s an example of how one might calculate the (arithmetic) mean in R:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">4</span>) <span class="sc">/</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -232,8 +230,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 </section>
-<section id="median" class="level3">
-<h3 class="anchored" data-anchor-id="median">Median</h3>
+<section id="median" class="level2">
+<h2 class="anchored" data-anchor-id="median">Median</h2>
 <p>The median is the ‘mid-point’ in a series of values. To calculate the median, first order all of the numbers in a series from smallest to largest.</p>
 <p>If there is an odd number of elements in the series, then there will be one value exactly in the middle of the series. The median can be calculated as follows:</p>
 <div class="cell">
@@ -246,15 +244,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the series</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>series_odd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  2 40 47 48 76</code></pre>
+<pre><code>[1]  9 18 52 57 62</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the median for an odd number of elements</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>series_odd[(<span class="fu">length</span>(series_odd) <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 47</code></pre>
+<pre><code>[1] 52</code></pre>
 </div>
 </div>
-<p>The number 47 is precisely in the middle of the series: there are two numbers below it, and two numbers above it.</p>
+<p>The number 52 is precisely in the middle of the series: there are two numbers below it, and two numbers above it.</p>
 <p>In the example above, the <code>length()</code> function returns the number of elements in the series and the <code>[]</code> are used to extract to extract the value found at a given position in the series (in this case, the median).</p>
 <p>If there is an even number of elements in the series, then there will be <em>two</em> numbers in the middle of the series, so it’s necessary to find the <em>mean</em> of these two middle values to calculate the median. Here’s an example:</p>
 <div class="cell">
@@ -267,15 +265,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the series</span></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>series_even</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  7  7 13 59 68 76</code></pre>
+<pre><code>[1]  3 10 10 13 39 73</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the median for an even number of elements</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(series_even[(<span class="fu">length</span>(series_even) <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 36</code></pre>
+<pre><code>[1] 11.5</code></pre>
 </div>
 </div>
-<p>The number 36 lies halfway between the middle two numbers in the series.</p>
+<p>The number 11.5 lies halfway between the middle two numbers in the series.</p>
 <p>The code shown above is rather verbose. Luckily, there is a much easier way to calculate the median in R - just use the <code>median()</code> function. Let’s check that our calculations above return the same results as those returned by the <code>median()</code> function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>series_odd[(<span class="fu">length</span>(series_odd) <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>] <span class="sc">==</span> <span class="fu">median</span>(series_odd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -288,7 +286,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>They do! So using <code>median()</code> is a much simpler approach. Generally, fewer lines of code makes for more robust code, so I’d definitely recommend using the <code>median()</code> function, especially since the way that the median is calculated can vary depending whether there is an odd or even number of elements in a series.</p>
-</section>
 </section>
 <section id="so-which-is-better" class="level2">
 <h2 class="anchored" data-anchor-id="so-which-is-better">So, which is better?</h2>
