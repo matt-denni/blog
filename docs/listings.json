@@ -2,8 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/stats-series-intro/index.html",
       "/posts/measures-of-centre-and-spread/index.html",
+      "/posts/stats-series-intro/index.html",
       "/posts/welcome/index.html"
     ]
   }

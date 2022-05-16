@@ -1,7 +1,7 @@
 ---
-title: "Statistics series intro"
+title: "A series of posts on statistics"
 author: "Matt Dennis"
-date: "2022-05-16"
+date: "2022-05-09"
 categories: [statistics]
 ---
 
@@ -9,4 +9,4 @@ Once upon a time, I composed and taught music for a living.  Now, I'm a data sci
 
 As a musician, I was good at music analysis.  I learned many techniques that could help me understand how a piece of music was put together.  While this helped me to develop an analytical way of thinking, none of the analytical *techniques* I learned in music analysis have been directly applicable to the problems I've faced as a data scientist (thus far).
 
-So, I needed to go back to the field of Mathematics and Statistics and acquire/dust off the tools needed in the data science world.  If you're on a similar journey to the one I took, then you might find the next series of posts that I'm going to be putting together useful.  All of these posts will have the #statistics tag attached to them.
+So, I needed to go back to the fields of Mathematics and Statistics and acquire/dust off the tools needed in the data science world.  If you're on a similar journey to the one I took, then you might find the next series of posts that I'm going to be putting together useful.  All of these posts will have the #statistics tag attached to them.
