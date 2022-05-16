@@ -6,17 +6,15 @@ categories: [statistics]
 image: "image.jpg"
 ---
 
-## Measures of centre
-
 In statistics, the two most common examples of measures of centre are the *mean* and *median*.  Another (less commonly used) measure of centre is the *mode*.  In this post, I will discuss the mean and median.  
 
-### Mean
+## Mean
 
 The mean value of a series of numbers is also often called the *average*.  In mathematical notation, the mean is often denoted as $\overline{x}$.  It is calculated by adding all the numbers in the series together, and then dividing that by the number of numbers in the series.
 
 There are a number of different forms of the mean: arithmetic, weighted, geometric and harmonic.  Generally, when most people talk about the mean without specifying a type, they are referring to the arithmetic mean, which is what is discussed below.  In a future post, I will look at the other forms of the mean (and where you might want to use them).
 
-#### Arithmetic mean
+### Arithmetic mean
 
 Here's an example of how one might calculate the (arithmetic) mean in R:
 
@@ -36,7 +34,7 @@ We can ask R to check that both calculations return the same value by using the 
 (1 + 2 + 3 + 4) / 4 == mean(c(1, 2, 3, 4))
 ```
 
-### Median
+## Median
 
 The median is the 'mid-point' in a series of values.  To calculate the median, first order all of the numbers in a series from smallest to largest.
 
