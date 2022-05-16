@@ -246,19 +246,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the series</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>series_odd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10 12 22 57 69</code></pre>
+<pre><code>[1]  2 40 47 48 76</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the median for an odd number of elements</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>series_odd[(<span class="fu">length</span>(series_odd) <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 22</code></pre>
+<pre><code>[1] 47</code></pre>
 </div>
 </div>
-<p>The number 22 is precisely in the middle of the series: there are two numbers below it, and two numbers above it.</p>
+<p>The number 47 is precisely in the middle of the series: there are two numbers below it, and two numbers above it.</p>
 <p>In the example above, the <code>length()</code> function returns the number of elements in the series and the <code>[]</code> are used to extract to extract the value found at a given position in the series (in this case, the median).</p>
-<ol start="3" type="1">
-<li>If there is an even number of elements in the series, then there will be <em>two</em> numbers in the middle of the series, so it’s necessary to find the <em>mean</em> of these two middle values to calculate the median. Here’s an example:</li>
-</ol>
+<p>If there is an even number of elements in the series, then there will be <em>two</em> numbers in the middle of the series, so it’s necessary to find the <em>mean</em> of these two middle values to calculate the median. Here’s an example:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This code generates 6 random integers between 1 and 100</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>series_even <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">100</span>))</span>
@@ -269,15 +267,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the series</span></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>series_even</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 11 12 39 49 62 82</code></pre>
+<pre><code>[1]  7  7 13 59 68 76</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the median for an even number of elements</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(series_even[(<span class="fu">length</span>(series_even) <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 44</code></pre>
+<pre><code>[1] 36</code></pre>
 </div>
 </div>
-<p>The number 44 lies halfway between the middle two numbers in the series.</p>
+<p>The number 36 lies halfway between the middle two numbers in the series.</p>
 <p>The code shown above is rather verbose. Luckily, there is a much easier way to calculate the median in R - just use the <code>median()</code> function. Let’s check that our calculations above return the same results as those returned by the <code>median()</code> function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>series_odd[(<span class="fu">length</span>(series_odd) <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>] <span class="sc">==</span> <span class="fu">median</span>(series_odd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -294,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="so-which-is-better" class="level2">
 <h2 class="anchored" data-anchor-id="so-which-is-better">So, which is better?</h2>
-<p>The mean is probably the most commonly used measure of centre; however, there are times when it is better to use the median. When there are extreme values (outliers) in the data, the mean tends to get pulled away from the ‘centre’ and toward those values. The same applies if the data are skewed to the left or to the right. In these cases, it is better to use the median.</p>
+<p>The mean is probably the most commonly used measure of centre; however, there are times when it is better to use the median. When there are extreme values (outliers) in the data, the mean tends to get pulled away from the ‘centre’ and toward those values. The same applies if the data are skewed to the left or to the right (more about this in a future post). In these cases, it is better to use the median.</p>
 
 
 </section>

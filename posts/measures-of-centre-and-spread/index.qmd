@@ -60,7 +60,7 @@ The number `r series_odd[(length(series_odd) + 1) / 2]` is precisely in the midd
 
 In the example above, the `length()` function returns the number of elements in the series and the `[]` are used to extract to extract the value found at a given position in the series (in this case, the median).
 
-3. If there is an even number of elements in the series, then there will be *two* numbers in the middle of the series, so it's necessary to find the *mean* of these two middle values to calculate the median.  Here's an example:
+If there is an even number of elements in the series, then there will be *two* numbers in the middle of the series, so it's necessary to find the *mean* of these two middle values to calculate the median.  Here's an example:
 
 ```{r}
 # This code generates 6 random integers between 1 and 100
@@ -89,4 +89,4 @@ They do!  So using `median()` is a much simpler approach.  Generally, fewer line
 
 ## So, which is better?
 
-The mean is probably the most commonly used measure of centre; however, there are times when it is better to use the median.  When there are extreme values (outliers) in the data, the mean tends to get pulled away from the 'centre' and toward those values.  The same applies if the data are skewed to the left or to the right.  In these cases, it is better to use the median.
+The mean is probably the most commonly used measure of centre; however, there are times when it is better to use the median.  When there are extreme values (outliers) in the data, the mean tends to get pulled away from the 'centre' and toward those values.  The same applies if the data are skewed to the left or to the right (more about this in a future post).  In these cases, it is better to use the median.
