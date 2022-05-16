@@ -1,36 +1,24 @@
 ---
 title: "Measures of centre and spread"
 author: "Matt Dennis"
-date: "2022-05-09"
+date: "2022-05-16"
 categories: [statistics]
 image: "image.jpg"
 ---
 
-Once upon a time, I composed and taught music for a living.  Now, I'm a data scientist.  It's been a wild ride and loads of fun.  But more about that in another post.
-
-As a musician, I was good at music analysis.  I learned many techniques that could help me understand how a piece of music was put together.  While this helped me to develop an analytical way of thinking, none of the analytical *techniques* I learned in music analysis have been directly applicable to the problems I've faced as a data scientist (thus far).
-
-So, I needed to go back to the field of Mathematics and Statistics and acquire/dust off the tools needed in the data science world.  If you're on a similar journey to the one I took, then you might find the next series of posts that I'm going to be putting together useful.
-
-I'm starting off with this post, on statistical measures of center and spread.  I'll be using `R` and the built in `mtcars` data set in the code examples.
-
-Here's what the first few rows of this data set look like:
-
-```{r}
-head(mtcars)
-```
-
-As you can see, there are a number of variables.  We'll be focusing on the first one, `mpg` in the examples below.
-
 ## Measures of centre
 
-In statistics, three common examples of measures of centre are *mean*, *median* and *mode*.
+In statistics, the two most common examples of measures of centre are the *mean* and *median*.  Another (less commonly used) measure of centre is the *mode*.  In this post, I will discuss the mean and median.  
 
 ### Mean
 
 The mean value of a series of numbers is also often called the *average*.  In mathematical notation, the mean is often denoted as $\overline{x}$.  It is calculated by adding all the numbers in the series together, and then dividing that by the number of numbers in the series.
 
-Here's an example of how one might calculate the mean in R:
+There are a number of different forms of the mean: arithmetic, weighted, geometric and harmonic.  Generally, when most people talk about the mean without specifying a type, they are referring to the arithmetic mean, which is what is discussed below.  In a future post, I will look at the other forms of the mean (and where you might want to use them).
+
+#### Arithmetic mean
+
+Here's an example of how one might calculate the (arithmetic) mean in R:
 
 ```{r}
 (1 + 2 + 3 + 4) / 4
@@ -42,7 +30,7 @@ Fortunately, there is an easier way to do this.  In R, you can make use of the `
 mean(c(1, 2, 3, 4))
 ```
 
-We can ask R to check that both approaches return the same value by using the `==` operator, which means 'is equal to'.  If both approaches return the same value, then R will print a result `TRUE`.
+We can ask R to check that both calculations return the same value by using the `==` operator, which means 'is equal to'.  If both approaches return the same value, then R will print a result `TRUE`.
 
 ```{r}
 (1 + 2 + 3 + 4) / 4 == mean(c(1, 2, 3, 4))
@@ -50,4 +38,55 @@ We can ask R to check that both approaches return the same value by using the `=
 
 ### Median
 
-The median is the 'mid-point' in a series of values.  
+The median is the 'mid-point' in a series of values.  To calculate the median, first order all of the numbers in a series from smallest to largest.
+
+If there is an odd number of elements in the series, then there will be one value exactly in the middle of the series.  The median can be calculated as follows:
+
+```{r}
+# This code generates 5 random integers between 1 and 100
+series_odd <- floor(runif(n = 5, min = 1, max = 100))
+
+# Sort the series from smallest to largest
+series_odd <- sort(series_odd)
+
+# Print the series
+series_odd
+
+# Find the median for an odd number of elements
+series_odd[(length(series_odd) + 1) / 2]
+```
+
+The number `r series_odd[(length(series_odd) + 1) / 2]` is precisely in the middle of the series: there are two numbers below it, and two numbers above it.  
+
+In the example above, the `length()` function returns the number of elements in the series and the `[]` are used to extract to extract the value found at a given position in the series (in this case, the median).
+
+3. If there is an even number of elements in the series, then there will be *two* numbers in the middle of the series, so it's necessary to find the *mean* of these two middle values to calculate the median.  Here's an example:
+
+```{r}
+# This code generates 6 random integers between 1 and 100
+series_even <- floor(runif(n = 6, min = 1, max = 100))
+
+# Sort the series
+series_even <- sort(series_even)
+
+# Print the series
+series_even
+
+# Find the median for an even number of elements
+mean(series_even[(length(series_even) / 2) + 0:1])
+```
+
+The number `r mean(series_even[(length(series_even) / 2) + 0:1])` lies halfway between the middle two numbers in the series.
+
+The code shown above is rather verbose.  Luckily, there is a much easier way to calculate the median in R - just use the `median()` function.  Let's check that our calculations above return the same results as those returned by the `median()` function:
+
+```{r}
+series_odd[(length(series_odd) + 1) / 2] == median(series_odd)
+mean(series_even[(length(series_even) / 2) + 0:1]) == median(series_even)
+```
+
+They do!  So using `median()` is a much simpler approach.  Generally, fewer lines of code makes for more robust code, so I'd definitely recommend using the `median()` function, especially since the way that the median is calculated can vary depending whether there is an odd or even number of elements in a series.
+
+## So, which is better?
+
+The mean is probably the most commonly used measure of centre; however, there are times when it is better to use the median.  When there are extreme values (outliers) in the data, the mean tends to get pulled away from the 'centre' and toward those values.  The same applies if the data are skewed to the left or to the right.  In these cases, it is better to use the median.
