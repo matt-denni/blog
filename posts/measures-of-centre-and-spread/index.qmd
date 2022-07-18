@@ -3,7 +3,7 @@ title: "Measures of centre"
 author: "Matt Dennis"
 date: "2022-05-16"
 categories: [statistics]
-image: "image.jpg"
+image: "dartboard.jpeg"
 ---
 
 In statistics, the two most common examples of measures of centre are the *mean* and *median*.  Another (less commonly used) measure of centre is the *mode*.  In this post, I will discuss the mean and median.  
