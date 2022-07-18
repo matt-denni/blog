@@ -9,7 +9,7 @@
 <meta name="author" content="Matt Dennis">
 <meta name="dcterms.date" content="2022-07-18">
 
-<title>blog - How to create a blog using quarto</title>
+<title>blog - Blogging with Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -97,7 +97,7 @@ ul.task-list{list-style: none;}
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">How to create a blog using quarto</h1>
+      <h1 class="title">Blogging with Quarto</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">quarto</div>
               </div>
@@ -135,6 +135,9 @@ ul.task-list{list-style: none;}
 
 
 <p>I’ve built this blog using RStudio’s Quarto publishing system. In this post, I’ll explain what I did.</p>
+<blockquote class="blockquote">
+<p>Note: This is a high level overview. For more details, refer to the <a href="https://quarto.org/">Quarto documentation</a>.</p>
+</blockquote>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
 <p>Quarto allows you to create dynamic content using R, Python, Julia or Observable. I do most of my data science work in R, in RStudio, on my MacBook Pro or Linux Ubuntu machine. I already had R and RStudio installed on both machines.</p>
@@ -180,10 +183,47 @@ draft: true
 <p>The <code>image</code> parameter is used to set the image that will appear next to the title of this post on the home page. The file that it references should be in the same directory as <code>index.qmd</code>.</p>
 <p>When <code>draft</code> is set to <code>true</code>, the post will not be included in the listing, site map, or site search, even when rendered. This is useful if you want to push new posts to a live site without making them visible until they are complete. Set this parameter to <code>false</code> when you’re ready to publish the post.</p>
 </section>
-<section id="rendering" class="level2">
-<h2 class="anchored" data-anchor-id="rendering">Rendering</h2>
+<section id="rendering-previewing" class="level2">
+<h2 class="anchored" data-anchor-id="rendering-previewing">Rendering &amp; previewing</h2>
 <p>To render all posts in the blog, use the following command:</p>
 <pre><code>quarto render</code></pre>
+<p>Once you’ve done this, you can preview your blog in a web browser by running the following command:</p>
+<pre><code>quarto preview</code></pre>
+<p>Every time you save new changes to a file in <code>posts/</code>, the preview will update accordingly. To stop the preview, just terminate the process (<code>Ctrl+C</code>).</p>
+</section>
+<section id="publishing-to-github" class="level2">
+<h2 class="anchored" data-anchor-id="publishing-to-github">Publishing to GitHub</h2>
+<p>It’s really easy to publish to GitHub.</p>
+<p>Make sure that the following directories are not in version control:</p>
+<p><code>/.quarto/</code> <code>_site/</code> <code>docs/</code></p>
+<p>There are two options, publish manually or automatically.</p>
+<section id="manually-publish" class="level3">
+<h3 class="anchored" data-anchor-id="manually-publish">Manually publish</h3>
+<p>First, create a <code>gh-pages</code> branch. Then, in GitHub under <code>Settings &gt; Pages</code>, select the <code>gh-pages</code> branch to be the source branch, and the root folder to be the source folder.</p>
+<p>Then, run the following command to publish to a GitHub pages site:</p>
+<pre><code>quarto publish gh-pages</code></pre>
+<p>This will publish the currently rendered site to GitHub pages.</p>
+</section>
+<section id="automatically-publish-via-a-github-actions-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="automatically-publish-via-a-github-actions-workflow">Automatically publish via a GitHub Actions workflow</h3>
+<p>I prefer this option. First, create a GitHub workflows sub-directory at this location: <code>.github/workflows/</code>. Within this directory, you need to create a GitHub workflow file. You can take a look at what mine looks like in the repository - it’s called <code>publish.yml</code>. I’ve just copied mine verbatim from <a href="https://quarto.org/docs/publishing/github-pages.html#publish-action">here</a>.</p>
+<p>One of the downsides of using GitHub Actions is that you have to re-create your development on the virtual machine that will execute it. Fortunately, the <code>{renv}</code> package makes this very easy.</p>
+<p>To use <code>{renv}</code>, you’ll need to make use of the following two commands:</p>
+<pre><code># Initialise virtual environment
+renv::init()
+# Take a snapshot of current environment
+renv::snapshot()</code></pre>
+<p>These commands update <code>renv.lock</code> with the list of required packages and their versions. <code>renv.lock</code> should be version controlled, as it will be used by the publish workflow.</p>
+</section>
+</section>
+<section id="freeze" class="level2">
+<h2 class="anchored" data-anchor-id="freeze">Freeze</h2>
+<p>There are times when you probably don’t want to re-render old posts. In fact, it’s probably only useful to have old posts re-render if you want your post to reflect changes in the underlying data.</p>
+<p>You can “freeze” posts by specifying the following option in the YAML header of a post:</p>
+<pre><code>execute:
+  freeze: true</code></pre>
+<p>It’s probably more useful to apply this as a general rule, which you can do in <code>posts/_metadata.yml</code>. Just paste the above option into that file <code>freeze: true</code>, and it will automatically prevent all rendered posts from being re-rendered, unless <code>freeze: auto</code> is specified in a certain post. The <code>auto</code> option will cause the post to be re-rendered only if there is a change to the post.</p>
+<p>All “frozen” posts are stored in the <code>_freeze/</code> directory. You can remove old frozen posts by deleting them from this folder.</p>
 
 
 </section>

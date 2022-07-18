@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/quarto-blog-create/index.html",
       "/posts/measures-of-centre-and-spread/index.html",
       "/posts/welcome/index.html"
     ]

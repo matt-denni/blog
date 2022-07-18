@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "My name is Matt, and I’m a data scientist. This is my work-in-progress blog which I’m planning to develop this space into a ‘personal textbook’ in due course. Some of the posts you see here will focus on elementary concepts, while others will be more complex. The idea is to provide a resource that is both helpful to those starting completely from scratch (like I did) and those who are more advanced. Give me a shout if there’s a topic you’d like to know more about.\nHope you enjoy reading, and thanks for the visit!"
+  },
+  {
     "objectID": "posts/measures-of-centre-and-spread/index.html",
     "href": "posts/measures-of-centre-and-spread/index.html",
     "title": "Measures of centre",
@@ -28,6 +35,62 @@
     "text": "So, which is better?\nThe mean is probably the most commonly used measure of centre; however, there are times when it is better to use the median. When there are extreme values (outliers) in the data, the mean tends to get pulled away from the ‘centre’ and toward those values. The same applies if the data are skewed to the left or to the right (more about this in a future post). In these cases, it is better to use the median."
   },
   {
+    "objectID": "posts/quarto-blog-create/index.html",
+    "href": "posts/quarto-blog-create/index.html",
+    "title": "Blogging with Quarto",
+    "section": "",
+    "text": "I’ve built this blog using RStudio’s Quarto publishing system. In this post, I’ll explain what I did."
+  },
+  {
+    "objectID": "posts/quarto-blog-create/index.html#installation",
+    "href": "posts/quarto-blog-create/index.html#installation",
+    "title": "Blogging with Quarto",
+    "section": "Installation",
+    "text": "Installation\nQuarto allows you to create dynamic content using R, Python, Julia or Observable. I do most of my data science work in R, in RStudio, on my MacBook Pro or Linux Ubuntu machine. I already had R and RStudio installed on both machines.\nTo install quarto, you can visit this page and choose the correct installation file for your operating system. I didn’t do this though. On my Mac, I prefer to install software via homebrew, if possible. So I did this:\nbrew install --cask quarto\nI haven’t installed quarto on my Ubuntu machine just yet."
+  },
+  {
+    "objectID": "posts/quarto-blog-create/index.html#create-the-blog",
+    "href": "posts/quarto-blog-create/index.html#create-the-blog",
+    "title": "Blogging with Quarto",
+    "section": "Create the blog",
+    "text": "Create the blog\nOnce you’ve got quarto installed, it’s time to create the blog.\nIf you’re working in RStudio, like I am, you’ve got two options here:\n\nUse File > New Project > New Directory > Quarto Blog inside RStudio.\nRun the following command in your terminal:\n\nquarto create-project myblog --type website:blog\nThis command will create a blog called myblog in your current working directory. You can, of course, substitute myblog with another preferred blog name.\nI chose option number 1. Quarto created an R project file for me, and it also gave me the option to initialize a Git repository at the same time, which I gladly accepted."
+  },
+  {
+    "objectID": "posts/quarto-blog-create/index.html#project-files-and-directories",
+    "href": "posts/quarto-blog-create/index.html#project-files-and-directories",
+    "title": "Blogging with Quarto",
+    "section": "Project files and directories",
+    "text": "Project files and directories\nThe quarto project was then initialized. A number of project files and directories were created. Here’s a brief explanation of the purpose of some of these:\n_quarto.yml is the quarto project file, where you can specify several parameters, such as the blog name, Twitter and LinkedIn addresses, blog theme etc. This is also where you specify the output directory for all rendered quarto posts.\nindex.qmd is used to configure the blog home page, where all the quarto posts are listed.\nabout.qmd is where the information about the blog and its author goes.\nThe posts/ directory is where the individual blog posts live.\nIn posts/_metadata.yml, you can configure options for how your posts should be rendered.\nYou can specify custom CSS styles in styles.css."
+  },
+  {
+    "objectID": "posts/quarto-blog-create/index.html#create-a-new-post",
+    "href": "posts/quarto-blog-create/index.html#create-a-new-post",
+    "title": "Blogging with Quarto",
+    "section": "Create a new post",
+    "text": "Create a new post\nTo create a new post, create a sub-directory within the posts/ directory. Then, create a file called index.qmd.\nYou’ll want to start your post with a YAML header that looks something like this:\n---\ntitle: \"How to create a blog using quarto\"\nauthor: \"Matt Dennis\"\ndate: \"2022-07-18\"\ncategories: [quarto]\nimage: \"quarto-blog-create.jpeg\"\ndraft: true\n---\nQuarto will automatically tag your post with the entries specified next to categories. By default, these tags show up on the home page in a nice organised way.\nThe image parameter is used to set the image that will appear next to the title of this post on the home page. The file that it references should be in the same directory as index.qmd.\nWhen draft is set to true, the post will not be included in the listing, site map, or site search, even when rendered. This is useful if you want to push new posts to a live site without making them visible until they are complete. Set this parameter to false when you’re ready to publish the post."
+  },
+  {
+    "objectID": "posts/quarto-blog-create/index.html#rendering-previewing",
+    "href": "posts/quarto-blog-create/index.html#rendering-previewing",
+    "title": "Blogging with Quarto",
+    "section": "Rendering & previewing",
+    "text": "Rendering & previewing\nTo render all posts in the blog, use the following command:\nquarto render\nOnce you’ve done this, you can preview your blog in a web browser by running the following command:\nquarto preview\nEvery time you save new changes to a file in posts/, the preview will update accordingly. To stop the preview, just terminate the process (Ctrl+C)."
+  },
+  {
+    "objectID": "posts/quarto-blog-create/index.html#publishing-to-github",
+    "href": "posts/quarto-blog-create/index.html#publishing-to-github",
+    "title": "Blogging with Quarto",
+    "section": "Publishing to GitHub",
+    "text": "Publishing to GitHub\nIt’s really easy to publish to GitHub.\nMake sure that the following directories are not in version control:\n/.quarto/ _site/ docs/\nThere are two options, publish manually or automatically.\n\nManually publish\nFirst, create a gh-pages branch. Then, in GitHub under Settings > Pages, select the gh-pages branch to be the source branch, and the root folder to be the source folder.\nThen, run the following command to publish to a GitHub pages site:\nquarto publish gh-pages\nThis will publish the currently rendered site to GitHub pages.\n\n\nAutomatically publish via a GitHub Actions workflow\nI prefer this option. First, create a GitHub workflows sub-directory at this location: .github/workflows/. Within this directory, you need to create a GitHub workflow file. You can take a look at what mine looks like in the repository - it’s called publish.yml. I’ve just copied mine verbatim from here.\nOne of the downsides of using GitHub Actions is that you have to re-create your development on the virtual machine that will execute it. Fortunately, the {renv} package makes this very easy.\nTo use {renv}, you’ll need to make use of the following two commands:\n# Initialise virtual environment\nrenv::init()\n# Take a snapshot of current environment\nrenv::snapshot()\nThese commands update renv.lock with the list of required packages and their versions. renv.lock should be version controlled, as it will be used by the publish workflow."
+  },
+  {
+    "objectID": "posts/quarto-blog-create/index.html#freeze",
+    "href": "posts/quarto-blog-create/index.html#freeze",
+    "title": "Blogging with Quarto",
+    "section": "Freeze",
+    "text": "Freeze\nThere are times when you probably don’t want to re-render old posts. In fact, it’s probably only useful to have old posts re-render if you want your post to reflect changes in the underlying data.\nYou can “freeze” posts by specifying the following option in the YAML header of a post:\nexecute:\n  freeze: true\nIt’s probably more useful to apply this as a general rule, which you can do in posts/_metadata.yml. Just paste the above option into that file freeze: true, and it will automatically prevent all rendered posts from being re-rendered, unless freeze: auto is specified in a certain post. The auto option will cause the post to be re-rendered only if there is a change to the post.\nAll “frozen” posts are stored in the _freeze/ directory. You can remove old frozen posts by deleting them from this folder."
+  },
+  {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Welcome!",
@@ -39,13 +102,6 @@
     "href": "index.html",
     "title": "blog",
     "section": "",
-    "text": "statistics\n\n\n\n\n\n\n\n\n\n\n\nMay 16, 2022\n\n\nMatt Dennis\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nMay 9, 2022\n\n\nMatt Dennis\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "My name is Matt, and I’m a data scientist. This is my work-in-progress blog which I’m planning to develop this space into a ‘personal textbook’ in due course. Some of the posts you see here will focus on elementary concepts, while others will be more complex. The idea is to provide a resource that is both helpful to those starting completely from scratch (like I did) and those who are more advanced. Give me a shout if there’s a topic you’d like to know more about.\nHope you enjoy reading, and thanks for the visit!"
+    "text": "quarto\n\n\n\n\n\n\n\n\n\n\n\nJul 18, 2022\n\n\nMatt Dennis\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\n\n\nMay 16, 2022\n\n\nMatt Dennis\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nMay 9, 2022\n\n\nMatt Dennis\n\n\n\n\n\n\nNo matching items"
   }
 ]

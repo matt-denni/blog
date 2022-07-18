@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://matt-denni.github.io/blog/posts/measures-of-centre-and-spread/index.html</loc>
-    <lastmod>2022-07-18T07:47:30.653Z</lastmod>
+    <loc>https://github.com/matt-denni/blog/about.html</loc>
+    <lastmod>2022-07-18T08:26:30.249Z</lastmod>
   </url>
   <url>
-    <loc>https://matt-denni.github.io/blog/posts/welcome/index.html</loc>
-    <lastmod>2022-07-18T07:47:31.596Z</lastmod>
+    <loc>https://github.com/matt-denni/blog/posts/measures-of-centre-and-spread/index.html</loc>
+    <lastmod>2022-07-18T08:26:31.997Z</lastmod>
   </url>
   <url>
-    <loc>https://matt-denni.github.io/blog/index.html</loc>
-    <lastmod>2022-07-18T07:47:32.099Z</lastmod>
+    <loc>https://github.com/matt-denni/blog/posts/quarto-blog-create/index.html</loc>
+    <lastmod>2022-07-18T08:26:32.601Z</lastmod>
   </url>
   <url>
-    <loc>https://matt-denni.github.io/blog/about.html</loc>
-    <lastmod>2022-07-18T07:47:32.500Z</lastmod>
+    <loc>https://github.com/matt-denni/blog/posts/welcome/index.html</loc>
+    <lastmod>2022-07-18T08:26:33.033Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/matt-denni/blog/index.html</loc>
+    <lastmod>2022-07-18T08:26:33.537Z</lastmod>
   </url>
 </urlset>
