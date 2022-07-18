@@ -1,0 +1,92 @@
+---
+title: "How to create a blog using quarto"
+author: "Matt Dennis"
+date: "2022-07-18"
+categories: [quarto]
+image: "quarto-blog-create.jpeg"
+draft: true
+---
+
+I've built this blog using RStudio's Quarto publishing system. In this post, I'll explain what I did.
+
+## Installation
+
+Quarto allows you to create dynamic content using R, Python, Julia or Observable.  I do most of my data science work in R, in RStudio, on my MacBook Pro or Linux Ubuntu machine.  I already had R and RStudio installed on both machines.
+
+To install quarto, you can visit [this page](https://quarto.org/docs/get-started) and choose the correct installation file for your operating system.  I didn't do this though.  On my Mac, I prefer to install software via homebrew, if possible. So I did this:
+
+```
+brew install --cask quarto
+```
+
+I haven't installed quarto on my Ubuntu machine just yet.
+
+## Create the blog
+
+Once you've got quarto installed, it's time to create the blog.
+
+If you're working in RStudio, like I am, you've got two options here:
+
+1. Use `File > New Project > New Directory > Quarto Blog` inside RStudio.
+2. Run the following command in your terminal:
+
+```
+quarto create-project myblog --type website:blog
+```
+
+This command will create a blog called `myblog` in your current working directory.  You can, of course, substitute `myblog` with another preferred blog name.
+
+I chose option number 1.  Quarto created an R project file for me, and it also gave me the option to initialize a Git repository at the same time, which I gladly accepted.
+
+## Project files and directories
+
+The quarto project was then initialized.  A number of project files and directories were created.  Here's a brief explanation of the purpose of some of these:
+
+`_quarto.yml` is the quarto project file, where you can specify several parameters, such as the blog name, Twitter and LinkedIn addresses, blog theme etc.  This is also where you specify the output directory for all rendered quarto posts.
+
+`index.qmd` is used to configure the blog home page, where all the quarto posts are listed.
+
+`about.qmd` is where the information about the blog and its author goes.
+
+The `posts/` directory is where the individual blog posts live.
+
+In `posts/_metadata.yml`, you can configure options for how your posts should be rendered.  
+
+You can specify custom CSS styles in `styles.css`.
+
+## Create a new post
+
+To create a new post, create a sub-directory within the `posts/` directory.  Then, create a file called `index.qmd`.  
+
+You'll want to start your post with a YAML header that looks something like this:
+
+```
+---
+title: "How to create a blog using quarto"
+author: "Matt Dennis"
+date: "2022-07-18"
+categories: [quarto]
+image: "quarto-blog-create.jpeg"
+draft: true
+---
+```
+
+Quarto will automatically tag your post with the entries specified next to `categories`.  By default, these tags show up on the home page in a nice organised way.
+
+The `image` parameter is used to set the image that will appear next to the title of this post on the home page.  The file that it references should be in the same directory as `index.qmd`.
+
+When `draft` is set to `true`, the post will not be included in the listing, site map, or site search, even when rendered.  This is useful if you want to push new posts to a live site without making them visible until they are complete.  Set this parameter to `false` when you're ready to publish the post.
+
+##
+
+
+
+
+
+
+
+
+
+
+
+
