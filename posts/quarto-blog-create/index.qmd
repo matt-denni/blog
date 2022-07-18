@@ -102,9 +102,9 @@ It's really easy to publish to GitHub.
 
 Make sure that the following directories are not in version control:
 
-`/.quarto/`
-`_site/`
-`docs/`
+1. `/.quarto/`
+2. `_site/`
+3. `docs/` (this is the output directory I have specified in `_quarto.yml`)
 
 There are two options, publish manually or automatically.
 
@@ -124,7 +124,7 @@ This will publish the currently rendered site to GitHub pages.
 
 I prefer this option.  First, create a GitHub workflows sub-directory at this location: `.github/workflows/`.  Within this directory, you need to create a GitHub workflow file.  You can take a look at what mine looks like in the repository - it's called `publish.yml`.  I've just copied mine verbatim from [here](https://quarto.org/docs/publishing/github-pages.html#publish-action).
 
-One of the downsides of using GitHub Actions is that you have to re-create your development on the virtual machine that will execute it.  Fortunately, the `{renv}` package makes this very easy.
+One of the downsides of using GitHub Actions is that you have to re-create your development environment on the virtual machine that will execute it (or risk having failed jobs in your GitHub workflow).  Fortunately, the `{renv}` package makes this very easy.
 
 To use `{renv}`, you'll need to make use of the following two commands:
 
@@ -135,7 +135,7 @@ renv::init()
 renv::snapshot()
 ```
 
-These commands update `renv.lock` with the list of required packages and their versions.  `renv.lock` should be version controlled, as it will be used by the publish workflow.
+These commands create and update `renv.lock` with the list of required packages and their versions.  `renv.lock` should be version controlled, as it will be used to create the virtual environment when the GitHub workflow is executed.
 
 ## Freeze
 
@@ -148,15 +148,6 @@ execute:
   freeze: true
 ```
 
-It's probably more useful to apply this as a general rule, which you can do in `posts/_metadata.yml`.  Just paste the above option into that file `freeze: true`, and it will automatically prevent all rendered posts from being re-rendered, unless `freeze: auto` is specified in a certain post.  The `auto` option will cause the post to be re-rendered only if there is a change to the post.
+It's probably more useful to apply this as a general rule, which you can do in `posts/_metadata.yml`.  Just paste `freeze: true` into that file, and it will automatically prevent all rendered posts from being re-rendered, unless `freeze: auto` is specified in a certain post.  The `auto` option will cause the post to be re-rendered only if there is a change to the post.
 
 All "frozen" posts are stored in the `_freeze/` directory.  You can remove old frozen posts by deleting them from this folder.
-
-
-
-
-
-
-
-
-
