@@ -3,14 +3,14 @@ title: "Welcome!"
 author: "Matt Dennis"
 date: "2022-05-09"
 categories: [news]
+image: "welcome.jpeg"
 ---
 
-Hi!
+Hello!
 
 I'm glad that you've landed here. This is my blog which I will serve as my notebook for all things data science related.
 
 At the moment, there's nothing much here, but if you check back in a few months and you will hopefully be able to read through a bunch of posts and see what I've been up to.
 
-Happy reading, Matt
-
-![](thumbnail.jpg)
+Happy reading, 
+Matt
