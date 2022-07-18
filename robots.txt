@@ -1,1 +1,1 @@
-Sitemap: https://github.com/matt-denni/blog/sitemap.xml
+Sitemap: https://matt-denni.github.io/blog/sitemap.xml

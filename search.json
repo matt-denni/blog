@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "My name is Matt, and I’m a data scientist. This is my work-in-progress blog which I’m planning to develop this space into a ‘personal textbook’ in due course. Some of the posts you see here will focus on elementary concepts, while others will be more complex. The idea is to provide a resource that is both helpful to those starting completely from scratch (like I did) and those who are more advanced. Give me a shout if there’s a topic you’d like to know more about.\nHope you enjoy reading, and thanks for the visit!"
-  },
-  {
     "objectID": "posts/measures-of-centre-and-spread/index.html",
     "href": "posts/measures-of-centre-and-spread/index.html",
     "title": "Measures of centre",
@@ -47,5 +40,12 @@
     "title": "blog",
     "section": "",
     "text": "statistics\n\n\n\n\n\n\n\n\n\n\n\nMay 16, 2022\n\n\nMatt Dennis\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nMay 9, 2022\n\n\nMatt Dennis\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "My name is Matt, and I’m a data scientist. This is my work-in-progress blog which I’m planning to develop this space into a ‘personal textbook’ in due course. Some of the posts you see here will focus on elementary concepts, while others will be more complex. The idea is to provide a resource that is both helpful to those starting completely from scratch (like I did) and those who are more advanced. Give me a shout if there’s a topic you’d like to know more about.\nHope you enjoy reading, and thanks for the visit!"
   }
 ]
