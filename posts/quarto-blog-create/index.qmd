@@ -1,13 +1,16 @@
 ---
-title: "How to create a blog using quarto"
+title: "Blogging with Quarto"
 author: "Matt Dennis"
 date: "2022-07-18"
 categories: [quarto]
 image: "quarto-blog-create.jpeg"
-draft: true
+execute:
+  freeze: auto
 ---
 
 I've built this blog using RStudio's Quarto publishing system. In this post, I'll explain what I did.
+
+> Note: This is a high level overview.  For more details, refer to the [Quarto documentation](https://quarto.org/).
 
 ## Installation
 
@@ -77,10 +80,77 @@ The `image` parameter is used to set the image that will appear next to the titl
 
 When `draft` is set to `true`, the post will not be included in the listing, site map, or site search, even when rendered.  This is useful if you want to push new posts to a live site without making them visible until they are complete.  Set this parameter to `false` when you're ready to publish the post.
 
-##
+## Rendering & previewing
 
+To render all posts in the blog, use the following command:
 
+```
+quarto render
+```
 
+Once you've done this, you can preview your blog in a web browser by running the following command:
+
+```
+quarto preview
+```
+
+Every time you save new changes to a file in `posts/`, the preview will update accordingly.  To stop the preview, just terminate the process (`Ctrl+C`).
+
+## Publishing to GitHub
+
+It's really easy to publish to GitHub.  
+
+Make sure that the following directories are not in version control:
+
+`/.quarto/`
+`_site/`
+`docs/`
+
+There are two options, publish manually or automatically.
+
+### Manually publish
+
+First, create a `gh-pages` branch.  Then, in GitHub under `Settings > Pages`, select the `gh-pages` branch to be the source branch, and the root folder to be the source folder.  
+
+Then, run the following command to publish to a GitHub pages site:
+
+```
+quarto publish gh-pages
+```
+
+This will publish the currently rendered site to GitHub pages.
+
+### Automatically publish via a GitHub Actions workflow
+
+I prefer this option.  First, create a GitHub workflows sub-directory at this location: `.github/workflows/`.  Within this directory, you need to create a GitHub workflow file.  You can take a look at what mine looks like in the repository - it's called `publish.yml`.  I've just copied mine verbatim from [here](https://quarto.org/docs/publishing/github-pages.html#publish-action).
+
+One of the downsides of using GitHub Actions is that you have to re-create your development on the virtual machine that will execute it.  Fortunately, the `{renv}` package makes this very easy.
+
+To use `{renv}`, you'll need to make use of the following two commands:
+
+```
+# Initialise virtual environment
+renv::init()
+# Take a snapshot of current environment
+renv::snapshot()
+```
+
+These commands update `renv.lock` with the list of required packages and their versions.  `renv.lock` should be version controlled, as it will be used by the publish workflow.
+
+## Freeze
+
+There are times when you probably don't want to re-render old posts.  In fact, it's probably only useful to have old posts re-render if you want your post to reflect changes in the underlying data.  
+
+You can "freeze" posts by specifying the following option in the YAML header of a post:
+
+```
+execute:
+  freeze: true
+```
+
+It's probably more useful to apply this as a general rule, which you can do in `posts/_metadata.yml`.  Just paste the above option into that file `freeze: true`, and it will automatically prevent all rendered posts from being re-rendered, unless `freeze: auto` is specified in a certain post.  The `auto` option will cause the post to be re-rendered only if there is a change to the post.
+
+All "frozen" posts are stored in the `_freeze/` directory.  You can remove old frozen posts by deleting them from this folder.
 
 
 
