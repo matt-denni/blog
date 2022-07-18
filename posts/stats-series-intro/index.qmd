@@ -3,6 +3,7 @@ title: "A series of posts on statistics"
 author: "Matt Dennis"
 date: "2022-05-09"
 categories: [statistics]
+draft: true
 ---
 
 Once upon a time, I composed and taught music for a living.  Now, I'm a data scientist.  It's been a wild ride and loads of fun.  
